@@ -25,12 +25,12 @@ int main()
 	//i = ft_printf(str,(int)-2147483648);
 	//456n %d width prescision and -
 	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
-	char *str = "%-1.8d\n";
+	char *str = "%-10.5d\n";
 
-	i = ft_printf(str,0);
+	i = ft_printf(str,-10);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,0);
+	i = printf(str,-10);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);
