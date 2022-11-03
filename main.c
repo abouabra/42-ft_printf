@@ -23,14 +23,14 @@ int main()
 	//0 d good x good
 	
 	//i = ft_printf(str,(int)-2147483648);
-	//456n %d width prescision and -
+	//491
 	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
 	char *str = "%-10.5d\n";
 
-	i = ft_printf(str,-10);
+	i = ft_printf(str,2147483647);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,-10);
+	i = printf(str,2147483647);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);
