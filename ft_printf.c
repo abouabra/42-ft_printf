@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:47:01 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:45:38 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,15 +58,6 @@ void	print_specifiers(va_list args,t_vars *vars)
 void scan_flags(t_vars *vars)
 {
 	int tmp;
-	// reserved for width
-	// if(*str == '-')
-	// {
-	// 	str++;
-	// 	vars->flags[zero] = 1;
-	// 	vars->flag_counter[zero] = atoi(str);
-	// 	vars->int_len[zero] = int_len(vars->flag_counter[zero]);
-	// 	return 1;
-	// }
 	if(*(vars->str) == '-')
 	{
 		(vars->str)++;
@@ -168,7 +159,7 @@ int	ft_printf(const char *str, ...)
 					vars->int_len[i] = 0;
 				scan_flags(vars);
 				vars->str += vars->int_len[width] + vars->int_len[zero] + vars->int_len[precision] + vars->int_len[minus];
-				//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
+				//printf("flag width counter: %d len:%d\n",vars->flag_counter[width],vars->int_len[precision]);
 			}
 			print_specifiers(args,vars);
 		}

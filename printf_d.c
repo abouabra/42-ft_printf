@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 18:38:40 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:47:37 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	ft_putnbr_original(int n,t_vars *vars)
 
 void handle_width(t_vars *vars, int int_len)
 {
+	vars->flags[width] = 0;
 	while(int_len < vars->flag_counter[width])
 	{
-		ft_putchar(' ', vars);
+		ft_putchar_original(' ', vars);
 		int_len++;
 	}
-	vars->flags[width] = 0;
 	vars->int_len[width] = 0;
 	vars->flag_counter[width] = 0;
 }

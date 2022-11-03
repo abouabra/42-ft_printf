@@ -6,18 +6,12 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 19:19:27 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:35:18 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c,t_vars *vars)
-{
-	write(1, &c, 1);
-	(*(vars->tracker))++;
-	(void) vars;
-}
 
 void	ft_putstr(char *s,t_vars *vars)
 {

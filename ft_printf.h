@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 12:24:48 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:46:20 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars);
 void handle_width(t_vars *vars, int int_len);
 void handle_padding(t_vars *vars,int flag_counter,int int_len,char c);
 
+void	ft_putchar(char c,t_vars *vars);
+void	ft_putchar_original(char c,t_vars *vars);
 int     ft_strlen(char *str);
 char	*ft_strdup(char *s1);
-void	ft_putchar(char c,t_vars *vars);
 void	ft_putstr(char *s,t_vars *vars);
 void	ft_put_unsigned_nbr(unsigned int nb,t_vars *vars);
 void	ft_put_adress(void *ptr,t_vars *vars);
