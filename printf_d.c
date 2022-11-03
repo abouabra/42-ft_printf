@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 11:28:45 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:15:59 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_putnbr(int n,t_vars *vars)
 	//printf("====");
 	//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 	handle_width(vars, int_len(vars,n));
-	if(n<0)
+	if(n < 0)
 	{
 		ft_putchar('-', vars);
 		// if(vars->flags[precision] == 1)
@@ -103,8 +103,8 @@ void	ft_putnbr(int n,t_vars *vars)
 		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
         handle_padding(vars,vars->flag_counter[precision],int_len(vars,n),'0');
 		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
-		//if(vars->flag_counter[precision] > 0)
-		ft_putnbr_original(n,vars);
+		if(n > 0)
+			ft_putnbr_original(n,vars);
         vars->flags[precision] = 0;
     }
 	if(vars->state == 0)

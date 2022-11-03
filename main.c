@@ -8,6 +8,7 @@ int main()
 	int i;
 	//char *str = "%010.6d\n"; //does not act like flag 0 it act like width
 	//char *str = "%-0.6d\n";  //it only activate pressision
+	//char *str = "%.0d\n"    Any%;  //it only activate pressision
 	// ft_printf("%14i%20i%2i%i", (int)-2147483648, 3, 30, -1);
 	
 	//tester 1
@@ -23,11 +24,12 @@ int main()
 	
 	//i = ft_printf(str,(int)-2147483648);
 	//
-	char *str = "%.0d\n";
-	i = ft_printf(str,10);
+	char *str = "%.d\n";
+
+	i = ft_printf(str,0);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,10);
+	i = printf(str,0);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);

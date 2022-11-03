@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 11:29:05 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:13:00 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,10 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[precision] = 1;
 		vars->flag_counter[precision] = ft_atoi((vars->str));
-		vars->int_len[precision] = int_len(vars,vars->flag_counter[precision]);
+		if(vars->flag_counter[precision] == -1)
+			vars->int_len[precision] = 0;
+		else
+			vars->int_len[precision] = int_len(vars,vars->flag_counter[precision]);
 		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 	}
 	if(*(vars->str) == '#')
