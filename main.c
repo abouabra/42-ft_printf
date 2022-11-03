@@ -24,7 +24,8 @@ int main()
 	
 	//i = ft_printf(str,(int)-2147483648);
 	//
-	char *str = "%.d\n";
+	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
+	char *str = "%.5d\n";
 
 	i = ft_printf(str,0);
 	printf("ft_printf: %d\n",i);
