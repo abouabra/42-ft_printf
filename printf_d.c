@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:01:22 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:17:30 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ void	ft_putnbr(int n,t_vars *vars)
         	ft_putnbr_original(n,vars);
 		}
         vars->flags[zero] = 0;
+		//vars->state=0;
     }
 	if(vars->flags[minus] == 1)
     {
@@ -102,6 +103,7 @@ void	ft_putnbr(int n,t_vars *vars)
 			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			vars->flags[minus] =0;
 			vars->flags[precision] =0;
+			vars->state=0;
 			return;
 		}
         ft_putnbr_original(n,vars);
@@ -117,6 +119,7 @@ void	ft_putnbr(int n,t_vars *vars)
 		if(n != 0)
 			ft_putnbr_original(n,vars);
         vars->flags[precision] = 0;
+		//vars->state=0;
     }
 	if(vars->state == 0)
 	{

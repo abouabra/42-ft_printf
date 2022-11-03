@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:09:06 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:16:34 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[space] = 1;
 	}
-	vars->state = 0;
 }
 #include <string.h>
 int	ft_printf(const char *str, ...)
