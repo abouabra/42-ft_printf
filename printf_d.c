@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:46:30 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:15:01 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ void	ft_putnbr(int n,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
+			//printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]);
+			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
 			if(n != 0)
 				ft_putnbr_original(n,vars);
@@ -89,7 +90,7 @@ void	ft_putnbr(int n,t_vars *vars)
 				vars->flag_counter[zero]--;
 			if(vars->flag_counter[precision] < int_len(vars, n))
 				vars->flag_counter[precision] = len_of_int;
-			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
+			//printf("======");
 			vars->flags[zero] =0;
 			vars->int_len[zero] = 0;
 			vars->flag_counter[zero] = 0;
