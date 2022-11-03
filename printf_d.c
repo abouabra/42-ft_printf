@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 18:17:21 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 18:20:01 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_putnbr(int n,t_vars *vars)
 				vars->flag_counter[zero]--;
 			//if(n==0 && vars->flags[precision] == 1)
 			//	len_of_int--;
-			printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]);
+			//printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]);
 			if(n < 0)
 			{
 				ft_putchar('-', vars);	
