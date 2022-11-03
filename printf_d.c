@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 16:24:16 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 17:49:32 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_putnbr(int n,t_vars *vars)
 	if(n==0 && vars->flags[precision] == 1)
 		len_of_int--;
 	handle_width(vars, int_len(vars,n));
-	if(n < 0 && vars->flags[precision] == 0 &&  vars->flags[zero] == 0)
+	if(n < 0 && (vars->flags[precision] != 1 ||  vars->flags[zero] != 1))
 	{
 		ft_putchar('-', vars);	
 	}
