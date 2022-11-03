@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 19:35:18 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:51:43 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_putstr(char *s,t_vars *vars)
 		s = "(null)";
 	while (s[i])
 	{
-		ft_putchar(s[i],vars);
+		ft_putchar_original(s[i],vars);
 		i++;
 	}
 }

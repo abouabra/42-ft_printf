@@ -22,7 +22,7 @@ void	ft_put_unbr_original(unsigned int nb,t_vars *vars)
 		ft_put_unbr_original(nb % 10,vars);
 	}
 	else
-		ft_putchar(nb + '0',vars);
+		ft_putchar_original(nb + '0',vars);
 }
 
 void	ft_put_unsigned_nbr(unsigned int nb,t_vars *vars)

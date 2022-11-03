@@ -11,7 +11,7 @@ void	adress_helper(unsigned long long nb,t_vars *vars)
 		adress_helper(nb % 16, vars);
 	}
 	else
-		ft_putchar(base[nb % 16],vars);
+		ft_putchar_original(base[nb % 16],vars);
 }
 
 void	ft_put_adress_original(void *ptr,t_vars *vars)

@@ -30,7 +30,7 @@ void	put_hex_original(unsigned int nb, char x,t_vars *vars)
 		put_hex_original(nb % 16, x,vars);
 	}
 	else
-		ft_putchar(base[nb % 16],vars);
+		ft_putchar_original(base[nb % 16],vars);
 }
 
 void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars)

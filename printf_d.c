@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 19:47:37 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:50:38 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_putnbr_original(int n,t_vars *vars)
 		ft_putnbr_original(nb % 10,vars);
 	}
 	else
-		ft_putchar(nb + '0',vars);
+		ft_putchar_original(nb + '0',vars);
 }
 
 void handle_width(t_vars *vars, int int_len)
@@ -51,7 +51,7 @@ void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 	//printf("////flag . counter: %d len:%d\n",int_len,flag_counter);
     while(int_len < flag_counter)
     {
-        ft_putchar(c, vars);
+        ft_putchar_original(c, vars);
         int_len++;
     }
 }
@@ -68,7 +68,7 @@ void	ft_putnbr(int n,t_vars *vars)
 	handle_width(vars, int_len(vars,n));
 	if(n < 0 && (vars->flags[precision] != 1 ||  vars->flags[zero] != 1))
 	{
-		ft_putchar('-', vars);	
+		ft_putchar_original('-', vars);	
 	}
 	if(vars->state == 0)
 	{
@@ -90,7 +90,7 @@ void	ft_putnbr(int n,t_vars *vars)
 			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
 			if(n < 0)
 			{
-				ft_putchar('-', vars);
+				ft_putchar_original('-', vars);
 				vars->flag_counter[precision]--;
 				len_of_int--;
 			}
