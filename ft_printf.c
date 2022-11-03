@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 14:12:58 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:17:43 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void scan_flags(t_vars *vars)
 			vars->int_len[minus] = int_len(vars,vars->flag_counter[minus]);
 		else
 			vars->int_len[minus] = 0;
-		printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
+		//printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
 		return;
 	}
 	if(*(vars->str) == '0')
@@ -95,7 +95,7 @@ void scan_flags(t_vars *vars)
 			vars->int_len[zero] = int_len(vars,vars->flag_counter[zero]);
 		else
 			vars->int_len[zero] = 0;
-		printf("flag 0 counter: %d len:%d\n",vars->flag_counter[zero],vars->int_len[zero]);
+		//printf("flag 0 counter: %d len:%d\n",vars->flag_counter[zero],vars->int_len[zero]);
 		return;
 	}
 	tmp = ft_atoi(vars->str);
@@ -117,7 +117,7 @@ void scan_flags(t_vars *vars)
 			vars->int_len[precision] = int_len(vars,vars->flag_counter[precision]);
 		else
 			vars->int_len[precision] = 0;
-		printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
+		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 	}
 	if(*(vars->str) == '#')
 	{
