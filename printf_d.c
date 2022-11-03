@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 14:01:00 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:14:00 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ void	ft_putnbr(int n,t_vars *vars)
 	{
 		ft_putchar('-', vars);	
 	}
-	//printf("\nflag precision counter: %d len:%d\n",n,int_len(vars,n));
+	
+	//printf("\nflag precision counter: %d len:%d\n",n,len_of_int);
 	
 	if(vars->flags[zero] == 1)
     {
@@ -89,14 +90,14 @@ void	ft_putnbr(int n,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
+			printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
 			if(n != 0)
 				ft_putnbr_original(n,vars);
 			if(n<0)
 				vars->flag_counter[minus]--;
 			if(vars->flag_counter[precision] < int_len(vars, n))
-				vars->flag_counter[precision] = int_len(vars, n);
+				vars->flag_counter[precision] = len_of_int;
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
 			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			return;
@@ -105,6 +106,7 @@ void	ft_putnbr(int n,t_vars *vars)
         handle_padding(vars,vars->flag_counter[minus],len_of_int,' ');
         vars->flags[minus] = 0;
     }
+
 	if(vars->flags[precision] == 1)
     {
 		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
