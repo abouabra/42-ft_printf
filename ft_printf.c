@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 08:30:31 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 08:55:23 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,6 +168,7 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	free(tmp);
-	return (*(vars->tracker));
+	free(vars);
+	return (tracker);
 }
 

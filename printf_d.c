@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 08:29:40 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 09:19:38 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	ft_putnbr_original(int n,t_vars *vars)
 	if (nb < 0)
 	{
 		nb = nb * -1;
-		ft_putchar('-',vars);
 	}
 	if (nb > 9)
 	{
@@ -55,6 +54,8 @@ void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 }
 void	ft_putnbr(int n,t_vars *vars)
 {
+	if(n<0)
+		ft_putchar('-', vars);
 	handle_width(vars, int_len(n));
 
 	if(vars->flags[zero] == 1)

@@ -11,6 +11,8 @@ $(NAME): $(OBJS)
 %.o:%.c
 	@$(CC) -Wall -Wextra -Werror -c $<
 
+bonus: fclean all
+
 printf: fclean $(NAME)
 	@gcc main.c $(NAME)
 	@./a.out
