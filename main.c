@@ -16,17 +16,18 @@ int main()
 	//. d good x good
 	
 	//tester 2
+	//width d good x good
 	//- d good x good
 	//. d good x good
 	//0 d good x good
 	
 	//i = ft_printf(str,(int)-2147483648);
 	//
-	char *str = "%.15d\n";
-	i = ft_printf(str,-10);
+	char *str = "%.0d\n";
+	i = ft_printf(str,10);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,-10);
+	i = printf(str,10);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);

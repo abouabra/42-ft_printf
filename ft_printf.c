@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 10:09:41 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 11:29:05 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ int	ft_printf(const char *str, ...)
 					vars->int_len[i] = 0;
 				scan_flags(vars);
 				vars->str += vars->int_len[width] + vars->int_len[zero] + vars->int_len[precision] + vars->int_len[minus];
+				//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 			}
 			print_specifiers(args,vars);
 		}
