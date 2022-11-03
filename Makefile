@@ -1,4 +1,4 @@
-SRC= ft_printf.c ft_printf_utils.c ft_atoi.c ft_calloc.c ft_memset.c print_d.c
+SRC= ft_printf.c ft_printf_utils.c printf_d.c printf_hex.c ft_libft.c
 
 OBJS=$(SRC:.c=.o)
 AR=ar -rcs
@@ -6,11 +6,14 @@ NAME=libftprintf.a
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(AR) $@ $^
+	@$(AR) $@ $^
 
 %.o:%.c
-	$(CC) -Wall -Wextra -Werror -c $<
+	@$(CC) -Wall -Wextra -Werror -c $<
 
+printf: fclean $(NAME)
+	@gcc main.c $(NAME)
+	@./a.out
 clean:
 	@rm -rf *.o
 
