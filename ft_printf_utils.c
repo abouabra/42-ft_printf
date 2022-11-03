@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 10:11:53 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 19:19:27 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ void	ft_putstr(char *s,t_vars *vars)
 	}
 }
 
-void	ft_put_unsigned_nbr(unsigned int nb,t_vars *vars)
-{
-	if (nb >= 10)
-	{
-		ft_put_unsigned_nbr(nb / 10,vars);
-		ft_put_unsigned_nbr(nb % 10,vars);
-	}
-	else
-		ft_putchar(nb + '0',vars);
-}
 
 
 int	int_len(t_vars *vars,long n)
