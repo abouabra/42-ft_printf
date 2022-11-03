@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 13:08:17 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:33:42 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,9 @@ void	ft_putnbr(int n,t_vars *vars)
 		if(vars->flags[precision] == 1)
 		{
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
-			ft_putnbr_original(n,vars);
+			if(n != 0)
+				ft_putnbr_original(n,vars);
+			//printf("len_of_int %d\n",len_of_int);
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
 			return;
 		}
