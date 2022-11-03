@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:16:34 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:35:47 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,7 +162,7 @@ int	ft_printf(const char *str, ...)
 			(vars->str)++;
 			while(!ft_strchr("cspdiuxX%",*(vars->str)))
 			{	
-				//printf("READ: %s\n",vars->str);
+				//printf("\nREAD: %s\n",vars->str);
 				i=-1;
 				while(++i<7)
 					vars->int_len[i] = 0;

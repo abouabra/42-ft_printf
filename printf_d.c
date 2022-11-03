@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 15:17:30 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:37:36 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_putnbr(int n,t_vars *vars)
 	//int i;
 	//printf("====");
 	//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
+
 	int len_of_int;
 	len_of_int = int_len(vars,n);
 	if(n==0 && vars->flags[precision] == 1)
@@ -69,7 +70,11 @@ void	ft_putnbr(int n,t_vars *vars)
 	{
 		ft_putchar('-', vars);	
 	}
-	
+	if(vars->state == 0)
+	{
+        ft_putnbr_original(n,vars);
+		return;
+	}
 	//printf("\nflag precision counter: %d len:%d\n",n,len_of_int);
 	
 	if(vars->flags[zero] == 1)
@@ -85,7 +90,9 @@ void	ft_putnbr(int n,t_vars *vars)
         	ft_putnbr_original(n,vars);
 		}
         vars->flags[zero] = 0;
-		//vars->state=0;
+		vars->int_len[zero] = 0;
+		vars->flag_counter[zero] = 0;
+		vars->state=0;
     }
 	if(vars->flags[minus] == 1)
     {
@@ -102,13 +109,21 @@ void	ft_putnbr(int n,t_vars *vars)
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
 			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			vars->flags[minus] =0;
+			vars->int_len[minus] = 0;
+			vars->flag_counter[minus] = 0;
+			
 			vars->flags[precision] =0;
+			vars->int_len[precision] = 0;
+			vars->flag_counter[precision] = 0;
 			vars->state=0;
 			return;
 		}
         ft_putnbr_original(n,vars);
         handle_padding(vars,vars->flag_counter[minus],len_of_int,' ');
-        vars->flags[minus] = 0;
+        vars->flags[minus] =0;
+		vars->int_len[minus] = 0;
+		vars->flag_counter[minus] = 0;
+		vars->state=0;
     }
 
 	if(vars->flags[precision] == 1)
@@ -119,10 +134,9 @@ void	ft_putnbr(int n,t_vars *vars)
 		if(n != 0)
 			ft_putnbr_original(n,vars);
         vars->flags[precision] = 0;
-		//vars->state=0;
+		vars->int_len[precision] = 0;
+		vars->flag_counter[precision] = 0;
+		vars->state=0;
     }
-	if(vars->state == 0)
-	{
-        ft_putnbr_original(n,vars);
-	}
+
 }

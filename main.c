@@ -23,16 +23,16 @@ int main()
 	//0 d good x good
 	
 	//i = ft_printf(str,(int)-2147483648);
-	//512
+	//776
 	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
 	//char *str = "%-4.5d%d%-10d-5d%-.3d\n";
-	char *str = "%.4d\n";
+	char *str = "%012d, %d, %2d, %42d\n";
 	//char *str = "%10.5d        %d\n";
 
-	i = ft_printf(str,3);
+	i = ft_printf(str,(int)-2147483648,3,30,-1);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,3);
+	i = printf(str,(int)-2147483648,3,30,-1);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);
