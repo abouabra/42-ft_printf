@@ -26,13 +26,13 @@ int main()
 	//776
 	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
 	//char *str = "%-4.5d%d%-10d-5d%-.3d\n";
-	char *str = "%042.4d\n";
+	char *str = "%030.20d\n";
 	//char *str = "%10.5d        %d\n";
 
-	i = ft_printf(str,44);
+	i = ft_printf(str,-4);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,44);
+	i = printf(str,-4);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);

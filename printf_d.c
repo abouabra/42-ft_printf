@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 16:15:01 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 16:24:16 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_putnbr(int n,t_vars *vars)
 	if(n==0 && vars->flags[precision] == 1)
 		len_of_int--;
 	handle_width(vars, int_len(vars,n));
-	if(n < 0)
+	if(n < 0 && vars->flags[precision] == 0 &&  vars->flags[zero] == 0)
 	{
 		ft_putchar('-', vars);	
 	}
@@ -81,15 +81,22 @@ void	ft_putnbr(int n,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
+			if(n==0 && vars->flags[precision] == 1)
+				len_of_int--;
 			//printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]);
-			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
-			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
-			if(n != 0)
-				ft_putnbr_original(n,vars);
 			if(n<0)
 				vars->flag_counter[zero]--;
 			if(vars->flag_counter[precision] < int_len(vars, n))
 				vars->flag_counter[precision] = len_of_int;
+			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
+			if(n < 0)
+			{
+				ft_putchar('-', vars);	
+			}
+			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
+			if(n != 0)
+				ft_putnbr_original(n,vars);
+			
 			//printf("======");
 			vars->flags[zero] =0;
 			vars->int_len[zero] = 0;
