@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 07:28:06 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:05:35 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_put_adress(void *ptr,t_vars *vars);
 char	*ft_strchr(const char *s, int c);
 void	*ft_memset(void *b, int c, size_t len);
 void	*libft_calloc(size_t nitems, size_t size);
-int     int_len(long n);
+int	int_len(t_vars *vars,long n);
 int     hex_len(unsigned int n);
 int     ft_atoi(char *str);
 

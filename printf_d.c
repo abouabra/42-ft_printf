@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 09:19:38 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:12:05 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void handle_width(t_vars *vars, int int_len)
 		ft_putchar(' ', vars);
 		int_len++;
 	}
+	vars->flags[width] = 0;
+	vars->int_len[width] = 0;
+	vars->flag_counter[width] = 0;
 }
 void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 {
@@ -54,9 +57,18 @@ void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 }
 void	ft_putnbr(int n,t_vars *vars)
 {
+	//int i;
+	handle_width(vars, int_len(vars,n));
 	if(n<0)
+	{
 		ft_putchar('-', vars);
-	handle_width(vars, int_len(n));
+		// if(vars->flags[precision] == 1)
+		// 	n  = n * -1;
+	// 	i=-1;
+	// 	while(++i<7)
+	// 		vars->flag_counter[i] = vars->flag_counter[i] - 1;
+	}
+	//printf("\nflag precision counter: %d len:%d\n",n,int_len(vars,n));
 
 	if(vars->flags[zero] == 1)
     {
@@ -67,7 +79,7 @@ void	ft_putnbr(int n,t_vars *vars)
 		}
 		else
 		{
-        	handle_padding(vars,vars->flag_counter[zero],int_len(n),'0');
+        	handle_padding(vars,vars->flag_counter[zero],int_len(vars,n),'0');
         	ft_putnbr_original(n,vars);
 		}
         vars->flags[zero] = 0;
@@ -76,19 +88,19 @@ void	ft_putnbr(int n,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			handle_padding(vars,vars->flag_counter[precision],int_len(n),'0');
+			handle_padding(vars,vars->flag_counter[precision],int_len(vars,n),'0');
 			ft_putnbr_original(n,vars);
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
 			return;
 		}
         ft_putnbr_original(n,vars);
-        handle_padding(vars,vars->flag_counter[minus],int_len(n),' ');
+        handle_padding(vars,vars->flag_counter[minus],int_len(vars,n),' ');
         vars->flags[minus] = 0;
     }
 	if(vars->flags[precision] == 1)
     {
 		//printf("\nflag: width count:  %d\nflag: . count: %d\n\n",vars->flag_counter[width],vars->flag_counter[width]);
-        handle_padding(vars,vars->flag_counter[precision],int_len(n),'0');
+        handle_padding(vars,vars->flag_counter[precision],int_len(vars,n),'0');
         ft_putnbr_original(n,vars);
         vars->flags[precision] = 0;
     }

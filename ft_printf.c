@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 08:55:23 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:09:41 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[minus] = 1;
 		vars->flag_counter[minus] = ft_atoi((vars->str));
-		vars->int_len[minus] = int_len(vars->flag_counter[minus]);
+		vars->int_len[minus] = int_len(vars,vars->flag_counter[minus]);
 		//printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
 		return;
 	}
@@ -88,7 +88,7 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[zero] = 1;
 		vars->flag_counter[zero] = ft_atoi(vars->str);
-		vars->int_len[zero] = int_len(vars->flag_counter[zero]);
+		vars->int_len[zero] = int_len(vars,vars->flag_counter[zero]);
 		//printf("flag 0 counter: %d len:%d\n",vars->flag_counter[zero],vars->int_len[zero]);
 		return;
 	}
@@ -97,7 +97,7 @@ void scan_flags(t_vars *vars)
 	{
 		vars->flags[width] = 1;
 		vars->flag_counter[width] = tmp;
-		vars->int_len[width]=int_len(vars->flag_counter[width]);
+		vars->int_len[width]=int_len(vars,vars->flag_counter[width]);
 		//printf("flag width counter: %d len:%d\n",vars->flag_counter[width],vars->int_len[width]);
 	}
 
@@ -107,7 +107,7 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[precision] = 1;
 		vars->flag_counter[precision] = ft_atoi((vars->str));
-		vars->int_len[precision] = int_len(vars->flag_counter[precision]);
+		vars->int_len[precision] = int_len(vars,vars->flag_counter[precision]);
 		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 	}
 	if(*(vars->str) == '#')

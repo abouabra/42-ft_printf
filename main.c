@@ -10,18 +10,23 @@ int main()
 	//char *str = "%-0.6d\n";  //it only activate pressision
 	// ft_printf("%14i%20i%2i%i", (int)-2147483648, 3, 30, -1);
 	
-	//
-	//- d and x good
-	//0 d ko x good
-	// 0 handle negative;
-	//. d ko x good
+	//tester 1
+	//- d good x good
+	//0 d good x good
+	//. d good x good
 	
+	//tester 2
+	//- d good x good
+	//. d good x good
+	//0 d good x good
+	
+	//i = ft_printf(str,(int)-2147483648);
 	//
-	char *str = "%014d\n";
-	i = ft_printf(str,UINT_MAX);
+	char *str = "%.15d\n";
+	i = ft_printf(str,-10);
 	printf("ft_printf: %d\n",i);
 	printf("================\n");
-	i = printf(str,UINT_MAX);
+	i = printf(str,-10);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);

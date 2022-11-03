@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 03:42:15 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 10:11:53 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,17 +45,18 @@ void	ft_put_unsigned_nbr(unsigned int nb,t_vars *vars)
 }
 
 
-int	int_len(long n)
+int	int_len(t_vars *vars,long n)
 {
 	int	counter;
-
+	(void) vars;
 	counter = 0;
 	if (n == 0)
 		return (1);
 	if (n < 0)
 	{
 		n = n * -1;
-		counter++;
+		if(vars->flags[precision] != 1)
+			counter++;
 	}
 	while (n > 0)
 	{
