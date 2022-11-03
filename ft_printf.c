@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 13:07:23 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 13:24:15 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[minus] = 1;
 		vars->flag_counter[minus] = ft_atoi((vars->str));
-		vars->int_len[minus] = int_len(vars,vars->flag_counter[minus]);
+		if(*(vars->str ) >= '0' && *(vars->str) <= '9')
+			vars->int_len[minus] = int_len(vars,vars->flag_counter[minus]);
+		else
+			vars->int_len[minus] = 0;
 		//printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
 		return;
 	}
@@ -88,7 +91,10 @@ void scan_flags(t_vars *vars)
 		vars->state = 1;
 		vars->flags[zero] = 1;
 		vars->flag_counter[zero] = ft_atoi(vars->str);
-		vars->int_len[zero] = int_len(vars,vars->flag_counter[zero]);
+		if(*(vars->str ) >= '0' && *(vars->str) <= '9')
+			vars->int_len[zero] = int_len(vars,vars->flag_counter[zero]);
+		else
+			vars->int_len[zero] = 0;
 		//printf("flag 0 counter: %d len:%d\n",vars->flag_counter[zero],vars->int_len[zero]);
 		return;
 	}
@@ -154,7 +160,7 @@ int	ft_printf(const char *str, ...)
 		if (*(vars->str) == '%')
 		{
 			(vars->str)++;
-			while(!ft_strchr("cspdiuxX",*(vars->str)))
+			while(!ft_strchr("cspdiuxX%",*(vars->str)))
 			{	
 				//printf("READ: %s\n",vars->str);
 				i=-1;
