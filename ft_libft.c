@@ -6,7 +6,7 @@
 /*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:26:06 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 12:10:54 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/03 12:24:55 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	ft_atoi(char *str)
 		final = final * 10 + str[i] - '0';
 		i++;
 	}
-	if(i == 0)
-		return -1;
 	return (final * sign);
 }
 
