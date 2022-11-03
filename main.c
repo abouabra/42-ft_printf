@@ -27,6 +27,7 @@ int main()
 	//char *str = "%.4d%.2d%.20d%.0d%.0d%.d%.d%.d\n";
 	//char *str = "%-4.5d%d%-10d-5d%-.3d\n";
 	char *str = "%01.d\n";
+	//char *str = "%01.1d\n";
 	//char *str = "%10.5d        %d\n";
 
 	i = ft_printf(str,0);
