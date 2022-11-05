@@ -28,12 +28,13 @@ int main()
 	//char *str = "%-4.5d%d%-10d-5d%-.3d\n";
 	//char *str = "%042.2d\n";
 	//char *str = "%01.1d\n";
-	char *str = "%10c\n";
-
-	i = ft_printf(str,'b');
-	printf("ft_printf: %d\n",i);
-	printf("================\n");
-	i = printf(str,'b');
+	int lsls=-1;
+	//char *str = "%10.1s\n";
+	//i = ft_printf(str,"21-school.ru");
+	//printf("ft_printf: %d\n",i);
+	//printf("================\n");
+	int gg=0;
+	i = printf("STR: %p\n",(void *)ULLONG_MAX);
 	printf("printf: %d\n",i);
 	// printf("================\n");
 	// i = ft_printf("%20d\n",69);

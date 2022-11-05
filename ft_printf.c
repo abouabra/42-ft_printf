@@ -3,37 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 19:45:38 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/05 18:36:41 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
-void	adress_helper(unsigned long long nb,t_vars *vars)
-{
-	char	*base;
-
-	base = "0123456789abcdef";
-	if (nb >= 16)
-	{
-		adress_helper(nb / 16, vars);
-		adress_helper(nb % 16, vars);
-	}
-	else
-		ft_putchar(base[nb % 16],vars);
-}
-
-void	ft_put_adress(void *ptr,t_vars *vars)
-{
-	unsigned long long	nb;
-
-	nb = (unsigned long long)ptr;
-	ft_putstr("0x",vars);
-	adress_helper(nb,vars);
-}
 
 void	print_specifiers(va_list args,t_vars *vars)
 {
@@ -74,6 +52,7 @@ void scan_flags(t_vars *vars)
 		else
 			vars->int_len[minus] = 0;
 		//printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
+		// %.0d %.d
 		return;
 	}
 	if(*(vars->str) == '0')
