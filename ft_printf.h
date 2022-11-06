@@ -6,14 +6,13 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/05 18:09:22 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:07:28 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdint.h>
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>

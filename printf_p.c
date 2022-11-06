@@ -43,7 +43,6 @@ void	ft_put_adress(void *ptr,t_vars *vars)
 
 	nb = (unsigned long long)ptr;
 	len_of_int = ptr_len(nb) + 2;
-	//printf("LEN: %d\n",len_of_int);
 	handle_width(vars,len_of_int);
 	if(vars->flags[zero] != 1)
 	{

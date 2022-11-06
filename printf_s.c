@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/05 18:36:27 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:08:01 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	ft_putstr(char *s,t_vars *vars)
 	len_of_str = ft_strlen(s);
 	if(vars->flags[width] == 1 && vars->flags[precision] != 1)
 		handle_width(vars,len_of_str);
-	//printf("LEN: %d",len_of_str);
 	if(vars->state == 0)
 	{
         ft_putstr_original(s,vars);
@@ -60,14 +59,10 @@ void	ft_putstr(char *s,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			//printf("len_of_str %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			if(vars->flag_counter[precision] > len_of_str)
 				vars->flag_counter[precision] = len_of_str;
 			handle_string_precision(vars,vars->flag_counter[precision],s);
-			// if(n<0)
-			// 	vars->flag_counter[minus]--;
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
-			//printf("len_of_str %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			vars->flags[minus] =0;
 			vars->int_len[minus] = 0;
 			vars->flag_counter[minus] = 0;
@@ -87,7 +82,6 @@ void	ft_putstr(char *s,t_vars *vars)
     }
 	if(vars->flags[precision] == 1)
     {
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 		if(vars->flag_counter[precision] < len_of_str)
 			len_of_str = vars->flag_counter[precision];
 		handle_width(vars,len_of_str);

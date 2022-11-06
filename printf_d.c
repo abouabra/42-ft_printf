@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 15:58:43 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:06:56 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 	{
 		handle_width(vars,flag_counter);
 	}
-	//printf("////flag . counter: %d len:%d\n",int_len,flag_counter);
     while(int_len < flag_counter)
     {
         ft_putchar_original(c, vars);
@@ -106,7 +105,6 @@ void	ft_putnbr(int n,t_vars *vars)
 			if(vars->flag_counter[precision] < int_len(vars, n))
 				vars->flag_counter[precision] = len_of_int;
 			
-			//printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]-1);
 			if(n<0)
 				vars->flag_counter[zero]--;
 			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
@@ -120,7 +118,6 @@ void	ft_putnbr(int n,t_vars *vars)
 			if(n != 0)
 				ft_putnbr_original(n,vars);
 			
-			//printf("======");
 			vars->flags[zero] =0;
 			vars->int_len[zero] = 0;
 			vars->flag_counter[zero] = 0;
@@ -145,7 +142,6 @@ void	ft_putnbr(int n,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
 			if(n != 0)
 				ft_putnbr_original(n,vars);
@@ -154,7 +150,6 @@ void	ft_putnbr(int n,t_vars *vars)
 			if(vars->flag_counter[precision] < int_len(vars, n))
 				vars->flag_counter[precision] = len_of_int;
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			vars->flags[minus] =0;
 			vars->int_len[minus] = 0;
 			vars->flag_counter[minus] = 0;
@@ -175,9 +170,7 @@ void	ft_putnbr(int n,t_vars *vars)
 
 	if(vars->flags[precision] == 1)
     {
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
         handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 		if(n != 0)
 			ft_putnbr_original(n,vars);
         vars->flags[precision] = 0;

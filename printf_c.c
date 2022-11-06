@@ -8,10 +8,9 @@ void	ft_putchar_original(char c,t_vars *vars)
 	(*(vars->tracker))++;
 	(void) vars;
 }
+
 void	ft_putchar(char c,t_vars *vars)
 {
-	//handle width and -
-	//printf("GG");
 	handle_width(vars,1);
 	if(vars->state == 0)
 	{

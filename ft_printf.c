@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/05 18:36:41 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 16:07:19 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void scan_flags(t_vars *vars)
 			vars->int_len[minus] = int_len(vars,vars->flag_counter[minus]);
 		else
 			vars->int_len[minus] = 0;
-		//printf("flag - counter: %d len:%d\n",vars->flag_counter[minus],vars->int_len[minus]);
-		// %.0d %.d
 		return;
 	}
 	if(*(vars->str) == '0')
@@ -65,7 +63,6 @@ void scan_flags(t_vars *vars)
 			vars->int_len[zero] = int_len(vars,vars->flag_counter[zero]);
 		else
 			vars->int_len[zero] = 0;
-		//printf("flag 0 counter: %d len:%d\n",vars->flag_counter[zero],vars->int_len[zero]);
 		return;
 	}
 	tmp = ft_atoi(vars->str);
@@ -74,7 +71,6 @@ void scan_flags(t_vars *vars)
 		vars->flags[width] = 1;
 		vars->flag_counter[width] = tmp;
 		vars->int_len[width]=int_len(vars,vars->flag_counter[width]);
-		//printf("flag width counter: %d len:%d\n",vars->flag_counter[width],vars->int_len[width]);
 	}
 
 	if(*(vars->str) == '.')
@@ -87,7 +83,6 @@ void scan_flags(t_vars *vars)
 			vars->int_len[precision] = int_len(vars,vars->flag_counter[precision]);
 		else
 			vars->int_len[precision] = 0;
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 	}
 	if(*(vars->str) == '#')
 	{
@@ -108,7 +103,7 @@ void scan_flags(t_vars *vars)
 		vars->flags[space] = 1;
 	}
 }
-#include <string.h>
+
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
@@ -132,13 +127,11 @@ int	ft_printf(const char *str, ...)
 			(vars->str)++;
 			while(!ft_strchr("cspdiuxX%",*(vars->str)))
 			{	
-				//printf("\nREAD: %s\n",vars->str);
 				i=-1;
 				while(++i<7)
 					vars->int_len[i] = 0;
 				scan_flags(vars);
 				vars->str += vars->int_len[width] + vars->int_len[zero] + vars->int_len[precision] + vars->int_len[minus];
-				//printf("flag width counter: %d len:%d\n",vars->flag_counter[width],vars->int_len[precision]);
 			}
 			print_specifiers(args,vars);
 		}

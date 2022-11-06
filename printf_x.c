@@ -67,19 +67,10 @@ void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars)
 			if(vars->flag_counter[precision] < hex_len(nb))
 				vars->flag_counter[precision] = len_of_int;
 			
-			//printf("len_of_int %d %d\n",vars->flag_counter[zero],vars->flag_counter[precision]-1);
 			handle_padding(vars,vars->flag_counter[zero],vars->flag_counter[precision],' ');
-			// if(n < 0)
-			// {
-			// 	ft_putchar('-', vars);
-			// 	vars->flag_counter[precision]--;
-			// 	len_of_int--;
-			// }
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
 			if(nb != 0)
         		put_hex_original(nb,x,vars);
-			
-			//printf("======");
 			vars->flags[zero] =0;
 			vars->int_len[zero] = 0;
 			vars->flag_counter[zero] = 0;
@@ -104,16 +95,12 @@ void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars)
     {
 		if(vars->flags[precision] == 1)
 		{
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
 			if(nb != 0)
 	        	put_hex_original(nb,x,vars);
-			// if(n<0)
-			// 	vars->flag_counter[minus]--;
 			if(vars->flag_counter[precision] < hex_len(nb))
 				vars->flag_counter[precision] = len_of_int;
 			handle_padding(vars,vars->flag_counter[minus],vars->flag_counter[precision],' ');
-			//printf("len_of_int %d %d\n",vars->flag_counter[precision],vars->flag_counter[minus]);
 			vars->flags[minus] =0;
 			vars->int_len[minus] = 0;
 			vars->flag_counter[minus] = 0;
@@ -133,11 +120,9 @@ void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars)
     }
 	if(vars->flags[precision] == 1)
     {
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
         handle_padding(vars,vars->flag_counter[precision],len_of_int,'0');
-		//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
 		if(nb != 0)
-	    put_hex_original(nb,x,vars);
+	    	put_hex_original(nb,x,vars);
         vars->flags[precision] = 0;
 		vars->int_len[precision] = 0;
 		vars->flag_counter[precision] = 0;
