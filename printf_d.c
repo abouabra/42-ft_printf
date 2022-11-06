@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/05 18:22:03 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:58:43 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,26 +57,48 @@ void handle_padding(t_vars *vars,int flag_counter,int int_len,char c)
 }
 void	ft_putnbr(int n,t_vars *vars)
 {
-	//int i;
-	//printf("====");
-	//printf("flag . counter: %d len:%d\n",vars->flag_counter[precision],vars->int_len[precision]);
+	int	len_of_int;
 
-	int len_of_int;
-	len_of_int = int_len(vars,n);
-	if(n==0 && vars->flags[precision] == 1)
+	len_of_int = int_len(vars, n);
+	if (n == 0 && vars->flags[precision] == 1)
 		len_of_int--;
-	handle_width(vars, int_len(vars,n));
-	if(n < 0 && (vars->flags[precision] != 1 ||  vars->flags[zero] != 1))
+	if (vars->flags[plus] != 1 && vars->flags[space] != 1)
+		handle_width(vars, int_len(vars, n));
+	if (n < 0 && vars->flags[plus] != 1 && vars->flags[space] != 1
+		&& (vars->flags[precision] != 1 || vars->flags[zero] != 1))
 	{
-		ft_putchar_original('-', vars);	
+		ft_putchar_original('-', vars);
 	}
-	if(vars->state == 0)
+	if (vars->state == 0)
 	{
-        ft_putnbr_original(n,vars);
-		return;
+		ft_putnbr_original(n, vars);
+		return ;
 	}
-	//printf("\nflag precision counter: %d len:%d\n",n,len_of_int);
-	
+	if (vars->flags[plus] == 1)
+	{
+		vars->flags[plus] = 0;
+		if (n >= 0)
+			len_of_int++;
+		handle_width(vars, len_of_int);
+		if (n < 0)
+			ft_putchar_original('-', vars);
+		if (n >= 0)
+			ft_putchar_original('+', vars);
+		ft_putnbr_original(n, vars);
+		vars->state = 0;
+	}
+	if (vars->flags[space] == 1)
+	{
+		vars->flags[space] = 0;
+		len_of_int++;
+		handle_width(vars, len_of_int);
+		if (n >= 0)
+			ft_putchar_original(' ', vars);
+		if (n < 0)
+			ft_putchar_original('-', vars);
+		ft_putnbr_original(n, vars);
+		vars->state = 0;
+	}
 	if(vars->flags[zero] == 1)
     {
 		if(vars->flags[precision] == 1)

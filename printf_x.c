@@ -35,15 +35,30 @@ void	put_hex_original(unsigned int nb, char x,t_vars *vars)
 
 void	ft_put_hex_nbr(unsigned int nb, char x,t_vars *vars)
 {
-	int len_of_int;
+	int	len_of_int;
+
 	len_of_int = hex_len(nb);
-	if(nb==0 && vars->flags[precision] == 1)
+	if (nb == 0 && vars->flags[precision] == 1)
 		len_of_int--;
-	handle_width(vars,hex_len(nb));
-	if(vars->state == 0)
+	if (vars->flags[hashtag] != 1)
+		handle_width(vars, hex_len(nb));
+	if (vars->state == 0)
 	{
-        put_hex_original(nb,x,vars);
-		return;
+		put_hex_original(nb, x, vars);
+		return ;
+	}
+	if (vars->flags[hashtag] == 1)
+	{
+		vars->flags[hashtag] = 0;
+		if (nb != 0)
+			len_of_int += 2;
+		handle_width(vars, len_of_int);
+		if (x == 'x' && nb != 0)
+			ft_putstr_original("0x", vars);
+		else if (x == 'X' && nb != 0)
+			ft_putstr_original("0X", vars);
+		put_hex_original(nb, x, vars);
+		vars->state = 0;
 	}
 	if(vars->flags[zero] == 1)
     {
