@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   printf_p.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/06 19:18:14 by abouabra          #+#    #+#             */
+/*   Updated: 2022/11/06 19:28:07 by abouabra         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ptr_len(unsigned long long n)
 {
@@ -15,7 +26,8 @@ int	ptr_len(unsigned long long n)
 	}
 	return (counter);
 }
-void	adress_helper(unsigned long long nb,t_vars *vars)
+
+void	adress_helper(unsigned long long nb, t_vars *vars)
 {
 	char	*base;
 
@@ -26,50 +38,41 @@ void	adress_helper(unsigned long long nb,t_vars *vars)
 		adress_helper(nb % 16, vars);
 	}
 	else
-		ft_putchar_original(base[nb % 16],vars);
+		ft_putchar_original(base[nb % 16], vars);
 }
 
-void	ft_put_adress_original(void *ptr,t_vars *vars)
+void	ft_put_adress_original(void *ptr, t_vars *vars)
 {
 	unsigned long long	nb;
 
 	nb = (unsigned long long)ptr;
-	adress_helper(nb,vars);
+	adress_helper(nb, vars);
 }
-void	ft_put_adress(void *ptr,t_vars *vars)
+
+void	ft_put_adress(void *ptr, t_vars *vars)
 {
-	int len_of_int;
 	unsigned long long	nb;
 
 	nb = (unsigned long long)ptr;
-	len_of_int = ptr_len(nb) + 2;
-	handle_width(vars,len_of_int);
-	if(vars->flags[zero] != 1)
+	handle_width(vars, ptr_len(nb) + 2);
+	if (vars->flags[zero] != 1)
+		ft_putstr_original("0x", vars);
+	if (vars->state == 0)
 	{
-		ft_putstr_original("0x",vars);
+		ft_put_adress_original(ptr, vars);
+		return ;
 	}
-	if(vars->state == 0)
+	if (vars->flags[zero] == 1)
 	{
-        ft_put_adress_original(ptr,vars);
-		return;
+		handle_padding(vars, vars->flag_counter[zero], ptr_len(nb) + 2, '0');
+		ft_putstr_original("0x", vars);
+		ft_put_adress_original(ptr, vars);
+		set_the_end(vars);
 	}
-	if(vars->flags[zero] == 1)
-    {
-		handle_padding(vars,vars->flag_counter[zero],len_of_int,'0');
-		ft_putstr_original("0x",vars);
-		ft_put_adress_original(ptr,vars);
-        vars->flags[zero] = 0;
-		vars->int_len[zero] = 0;
-		vars->flag_counter[zero] = 0;
-		vars->state=0;
-    }
-	if(vars->flags[minus] == 1)
-    {
-		ft_put_adress_original(ptr,vars);
-        handle_padding(vars,vars->flag_counter[minus],len_of_int,' ');
-        vars->flags[minus] =0;
-		vars->int_len[minus] = 0;
-		vars->flag_counter[minus] = 0;
-		vars->state=0;
-    }
+	if (vars->flags[minus] == 1)
+	{
+		ft_put_adress_original(ptr, vars);
+		handle_padding(vars, vars->flag_counter[minus], ptr_len(nb) + 2, ' ');
+		set_the_end(vars);
+	}
 }

@@ -3,40 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_libft.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouabra <abouabra@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/02 13:26:06 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/03 12:24:55 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/06 19:22:37 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	sign;
-	int	final;
-
-	i = 0;
-	sign = 1;
-	final = 0;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' || str[i] == '\r')
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		final = final * 10 + str[i] - '0';
-		i++;
-	}
-	return (final * sign);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -46,6 +20,7 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)s);
 	return (0);
 }
+
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t	i;
@@ -68,17 +43,18 @@ void	*libft_calloc(size_t nitems, size_t size)
 	str = malloc(nitems * size);
 	if (!str)
 		return (0);
-	ft_memset(str, 0,nitems * size);
+	ft_memset(str, 0, nitems * size);
 	return (str);
 }
 
-int ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
-	int i;
-	i=0;
+	int	i;
+
+	i = 0;
 	while (str[i])
 		i++;
-	return i;
+	return (i);
 }
 
 char	*ft_strdup(char *s1)

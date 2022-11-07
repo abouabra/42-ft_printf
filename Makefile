@@ -1,4 +1,4 @@
-SRC= ft_printf.c ft_printf_utils.c printf_d.c printf_x.c printf_p.c printf_u.c printf_c.c printf_s.c ft_libft.c
+SRC= ft_printf.c scan_flags.c ft_printf_utils.c ft_printf_bonus_utils.c printf_d.c printf_x.c printf_p.c printf_u.c printf_c.c printf_s.c ft_libft.c
 
 OBJS=$(SRC:.c=.o)
 AR=ar -rcs
