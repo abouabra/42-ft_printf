@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 16:07:28 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 16:34:57 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		handle_width(t_vars *vars, int int_len);
 void		handle_padding(t_vars *vars, int flag_counter, int int_len, char c);
 
 void		handle_string_precision(t_vars *vars, int flag_counter, char *str);
-void		set_the_end(t_vars *vars);
+void		set_the_end(t_vars *vars, int index);
 void		scan_flags(t_vars *vars);
 
 void		ft_putchar(char c, t_vars *vars);

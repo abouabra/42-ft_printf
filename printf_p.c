@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:18:14 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:28:07 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:23:15 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	ft_put_adress(void *ptr, t_vars *vars)
 	unsigned long long	nb;
 
 	nb = (unsigned long long)ptr;
-	handle_width(vars, ptr_len(nb) + 2);
+	if (vars->flags[precision] != 1)
+		handle_width(vars, ptr_len(nb) + 2);
 	if (vars->flags[zero] != 1)
 		ft_putstr_original("0x", vars);
 	if (vars->state == 0)
@@ -67,12 +68,12 @@ void	ft_put_adress(void *ptr, t_vars *vars)
 		handle_padding(vars, vars->flag_counter[zero], ptr_len(nb) + 2, '0');
 		ft_putstr_original("0x", vars);
 		ft_put_adress_original(ptr, vars);
-		set_the_end(vars);
+		set_the_end(vars, zero);
 	}
 	if (vars->flags[minus] == 1)
 	{
 		ft_put_adress_original(ptr, vars);
 		handle_padding(vars, vars->flag_counter[minus], ptr_len(nb) + 2, ' ');
-		set_the_end(vars);
+		set_the_end(vars, minus);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 20:24:19 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:09:20 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	handle_flag_minus(t_vars *vars, int len_of_int, int n)
 {
 	if (vars->flags[precision] == 1)
 	{
-		handle_padding(vars, vars->flag_counter[precision],
-			len_of_int, '0');
+		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 		if (n != 0)
 			ft_putnbr_original(n, vars);
 		if (n < 0)
@@ -26,12 +25,13 @@ void	handle_flag_minus(t_vars *vars, int len_of_int, int n)
 			vars->flag_counter[precision] = len_of_int;
 		handle_padding(vars, vars->flag_counter[minus],
 			vars->flag_counter[precision], ' ');
-		set_the_end(vars);
+		set_the_end(vars, precision);
+		set_the_end(vars, minus);
 		return ;
 	}
 	ft_putnbr_original(n, vars);
 	handle_padding(vars, vars->flag_counter[minus], len_of_int, ' ');
-	set_the_end(vars);
+	set_the_end(vars, minus);
 }
 
 void	handle_flag_zero(t_vars *vars, int len_of_int, int n)
@@ -53,12 +53,13 @@ void	handle_flag_zero(t_vars *vars, int len_of_int, int n)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 		if (n != 0)
 			ft_putnbr_original(n, vars);
-		set_the_end(vars);
+		set_the_end(vars, zero);
+		set_the_end(vars, precision);
 		return ;
 	}
 	handle_padding(vars, vars->flag_counter[zero], len_of_int, '0');
 	ft_putnbr_original(n, vars);
-	set_the_end(vars);
+	set_the_end(vars, zero);
 }
 
 void	put_nbr_b1(t_vars *vars, int len_of_int, int n)
@@ -72,7 +73,7 @@ void	put_nbr_b1(t_vars *vars, int len_of_int, int n)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 		if (n != 0)
 			ft_putnbr_original(n, vars);
-		set_the_end(vars);
+		set_the_end(vars, precision);
 	}
 }
 
@@ -89,7 +90,7 @@ void	put_nbr_b2(t_vars *vars, int len_of_int, int n)
 		if (n >= 0)
 			ft_putchar_original('+', vars);
 		ft_putnbr_original(n, vars);
-		set_the_end(vars);
+		set_the_end(vars, plus);
 	}
 	if (vars->flags[space] == 1)
 	{
@@ -101,7 +102,7 @@ void	put_nbr_b2(t_vars *vars, int len_of_int, int n)
 		if (n < 0)
 			ft_putchar_original('-', vars);
 		ft_putnbr_original(n, vars);
-		set_the_end(vars);
+		set_the_end(vars, space);
 	}
 }
 
@@ -112,7 +113,8 @@ void	ft_putnbr(int n, t_vars *vars)
 	len_of_int = int_len(vars, n);
 	if (n == 0 && vars->flags[precision] == 1)
 		len_of_int--;
-	if (vars->flags[plus] != 1 && vars->flags[space] != 1)
+	if (vars->flags[plus] != 1 && vars->flags[space] != 1
+		&& vars->flags[precision] != 1)
 		handle_width(vars, int_len(vars, n));
 	if (n < 0 && vars->flags[plus] != 1 && vars->flags[space] != 1
 		&& (vars->flags[precision] != 1 || vars->flags[zero] != 1))

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 16:07:19 by abouabra         ###   ########.fr       */
+/*   Created: 2022/11/07 18:19:08 by abouabra          #+#    #+#             */
+/*   Updated: 2022/11/07 18:19:08 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	scan_flags3(t_vars *vars)
 		vars->flags[precision] = 1;
 		vars->flag_counter[precision] = ft_atoi((vars->str));
 		if (*(vars->str) >= '0' && *(vars->str) <= '9')
-			vars->int_len[precision] = int_len(vars,
-					vars->flag_counter[precision]);
+			vars->int_len[precision]
+				= int_len(vars, vars->flag_counter[precision]);
 		else
 			vars->int_len[precision] = 0;
 	}

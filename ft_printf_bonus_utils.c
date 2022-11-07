@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:22:53 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 15:08:21 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	handle_padding(t_vars *vars, int flag_counter, int int_len, char c)
 	}
 }
 
-void	set_the_end(t_vars *vars)
+void	set_the_end(t_vars *vars, int index)
 {
-	ft_memset(vars->flags, 0, sizeof(t_vars));
-	ft_memset(vars->int_len, 0, sizeof(t_vars));
-	ft_memset(vars->flag_counter, 0, sizeof(t_vars));
+	vars->flags[index] = 0;
+	vars->int_len[index] = 0;
+	vars->flag_counter[index] = 0;
 	vars->state = 0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:29:37 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:09:27 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ void	put_str_flag_minus(t_vars *vars, char *s, int len_of_str)
 			handle_string_precision(vars, vars->flag_counter[precision], s);
 			handle_padding(vars, vars->flag_counter[minus],
 				vars->flag_counter[precision], ' ');
-			set_the_end(vars);
+			set_the_end(vars, precision);
+			set_the_end(vars, minus);
 			return ;
 		}
 		ft_putstr_original(s, vars);
 		handle_padding(vars, vars->flag_counter[minus], len_of_str, ' ');
-		set_the_end(vars);
+		set_the_end(vars, minus);
 	}
 }
 
@@ -67,7 +68,8 @@ void	ft_putstr(char *s, t_vars *vars)
 	if (!s)
 		s = "(null)";
 	len_of_str = ft_strlen(s);
-	if (vars->flags[width] == 1 && vars->flags[precision] != 1)
+	if (vars->flags[width] == 1 && vars->flags[precision] != 1
+		&& vars->flags[precision] != 1)
 		handle_width(vars, len_of_str);
 	if (vars->state == 0)
 	{
@@ -81,6 +83,6 @@ void	ft_putstr(char *s, t_vars *vars)
 			len_of_str = vars->flag_counter[precision];
 		handle_width(vars, len_of_str);
 		handle_string_precision(vars, vars->flag_counter[precision], s);
-		set_the_end(vars);
+		set_the_end(vars, precision);
 	}
 }

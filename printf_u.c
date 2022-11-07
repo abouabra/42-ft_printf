@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:17:29 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:30:54 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:10:31 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ void	unsigned_flag_minus(t_vars *vars, int len_of_int, unsigned int nb)
 				vars->flag_counter[precision] = len_of_int;
 			handle_padding(vars, vars->flag_counter[minus],
 				vars->flag_counter[precision], ' ');
-			set_the_end(vars);
+			set_the_end(vars, precision);
+			set_the_end(vars, minus);
 			return ;
 		}
 		ft_put_unbr_original(nb, vars);
 		handle_padding(vars, vars->flag_counter[minus], len_of_int, ' ');
-		set_the_end(vars);
+		set_the_end(vars, minus);
 	}
 }
 
@@ -75,12 +76,13 @@ void	unsigned_flag_zero(t_vars *vars, int len_of_int, unsigned int nb)
 				len_of_int, '0');
 			if (nb != 0)
 				ft_put_unbr_original(nb, vars);
-			set_the_end(vars);
+			set_the_end(vars, precision);
+			set_the_end(vars, zero);
 			return ;
 		}
 		handle_padding(vars, vars->flag_counter[zero], len_of_int, '0');
 		ft_put_unbr_original(nb, vars);
-		set_the_end(vars);
+		set_the_end(vars, zero);
 	}
 }
 
@@ -91,7 +93,8 @@ void	ft_put_unsigned_nbr(unsigned int nb, t_vars *vars)
 	len_of_int = u_int_len(nb);
 	if (nb == 0 && vars->flags[precision] == 1)
 		len_of_int--;
-	handle_width(vars, u_int_len(nb));
+	if (vars->flags[precision] != 1)
+		handle_width(vars, u_int_len(nb));
 	if (vars->state == 0)
 	{
 		ft_put_unbr_original(nb, vars);
@@ -104,6 +107,6 @@ void	ft_put_unsigned_nbr(unsigned int nb, t_vars *vars)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 		if (nb != 0)
 			ft_put_unbr_original(nb, vars);
-		set_the_end(vars);
+		set_the_end(vars, precision);
 	}
 }
