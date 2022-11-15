@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   scan_flags.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2022/11/07 18:19:08 by abouabra          #+#    #+#             */
 /*   Updated: 2022/11/07 18:19:08 by abouabra         ###   ########.fr       */
 /*                                                                            */
@@ -12,7 +15,7 @@
 
 #include "ft_printf.h"
 
-void set_flags_properties(t_vars *vars,int index)
+void	set_flags_properties(t_vars *vars, int index)
 {
 	(vars->str)++;
 	vars->state = 1;
@@ -27,33 +30,35 @@ void set_flags_properties(t_vars *vars,int index)
 void	scan_flags2(t_vars *vars)
 {
 	if (*(vars->str) == '.')
-		set_flags_properties(vars,precision);
+		set_flags_properties(vars, precision);
 	if (*(vars->str) == '#')
-		set_flags_properties(vars,hashtag);
+		set_flags_properties(vars, hashtag);
 	if (*(vars->str) == '+')
-		set_flags_properties(vars,plus);
+		set_flags_properties(vars, plus);
 	if (*(vars->str) == ' ')
-		set_flags_properties(vars,space);
+		set_flags_properties(vars, space);
 }
 
 void	scan_flags(t_vars *vars)
 {
+	int	tmp;
+
 	if (*(vars->str) == '-')
 	{
-		if (*(vars->str+1) == '0')
+		if (*(vars->str + 1) == '0')
 		{
 			(vars->str)++;
 			return ;
 		}
-		set_flags_properties(vars,minus);
+		set_flags_properties(vars, minus);
 		return ;
 	}
 	if (*(vars->str) == '0')
 	{
-		set_flags_properties(vars,zero);
+		set_flags_properties(vars, zero);
 		return ;
 	}
-	int tmp = ft_atoi(vars->str);
+	tmp = ft_atoi(vars->str);
 	if (tmp > 0)
 	{
 		vars->flags[width] = 1;
