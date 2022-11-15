@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/14 19:05:33 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 12:16:07 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,32 +52,7 @@ void	general_multiple_flag(t_vars *vars, int len_of_int, int n, int index)
 	set_the_end(vars, index);
 }
 
-void	handle_flag_minus(t_vars *vars, int len_of_int, int n)
-{
-	if (vars->flags[precision] == 1)
-		general_multiple_flag(vars,len_of_int,n,minus);
-	else
-		general_single_flag(vars,len_of_int, n, minus);
-}
-
-void	handle_flag_zero(t_vars *vars, int len_of_int, int n)
-{
-	if (vars->flags[precision] == 1)
-		general_multiple_flag(vars,len_of_int,n,zero);
-	else 
-		general_single_flag(vars,len_of_int, n, zero);
-}
-
-void	put_nbr_b1(t_vars *vars, int len_of_int, int n)
-{
-	if (vars->flags[zero] == 1)
-		handle_flag_zero(vars, len_of_int, n);
-	if (vars->flags[minus] == 1)
-		handle_flag_minus(vars, len_of_int, n);
-	if (vars->flags[precision] == 1)
-		general_single_flag(vars,len_of_int, n, precision);
-}
-void	general_handle_b2(t_vars *vars, int len_of_int, int n,int index)
+void	general_single_flag_b2(t_vars *vars, int len_of_int, int n,int index)
 {
 	vars->flags[index] = 0;
 	if (n >= 0)
@@ -96,13 +71,30 @@ void	general_handle_b2(t_vars *vars, int len_of_int, int n,int index)
 	set_the_end(vars, index);
 }
 
-void	punbr_handle_b2(t_vars *vars, int len_of_int, int n)
+void	print_flags(t_vars *vars, int len_of_int, int n)
 {
+	if (vars->flags[zero] == 1)
+	{
+		if (vars->flags[precision] == 1)
+			general_multiple_flag(vars,len_of_int,n,zero);
+		else 
+			general_single_flag(vars,len_of_int, n, zero);
+	}
+	if (vars->flags[minus] == 1)
+	{
+		if (vars->flags[precision] == 1)
+			general_multiple_flag(vars,len_of_int,n,minus);
+		else
+			general_single_flag(vars,len_of_int, n, minus);
+	}
+	if (vars->flags[precision] == 1)
+		general_single_flag(vars,len_of_int, n, precision);
 	if (vars->flags[plus] == 1)
-		general_handle_b2(vars,len_of_int,n,plus);
+		general_single_flag_b2(vars,len_of_int,n,plus);
 	if (vars->flags[space] == 1)
-		general_handle_b2(vars,len_of_int,n,space);
+		general_single_flag_b2(vars,len_of_int,n,space);
 }
+
 
 void	ft_putnbr(int n, t_vars *vars)
 {
@@ -124,6 +116,5 @@ void	ft_putnbr(int n, t_vars *vars)
 		ft_putnbr_original(n, vars);
 		return ;
 	}
-	put_nbr_b1(vars, len_of_int, n);
-	punbr_handle_b2(vars, len_of_int, n);
+	print_flags(vars, len_of_int, n);
 }
