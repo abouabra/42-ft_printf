@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/07 16:34:57 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:21:46 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ typedef struct s_vars
 	int		flag_counter[7];
 	int		state;
 }			t_vars;
+#define BASE_D "0123456789"
+#define BASE_X_min "0123456789abcdef"
+#define BASE_X_max "0123456789ABCDEF"
 
 enum
 {
@@ -45,8 +48,18 @@ int			ft_printf(const char *str, ...);
 void		ft_putnbr(int n, t_vars *vars);
 void		ft_putnbr_original(int n, t_vars *vars);
 
+
+
+
+void		ft_putnbr_base_original(long long nb, char *base,t_vars *vars);
+void	ft_putnbr_base_originalTEST(unsigned long long nb, char *base,t_vars *vars);
+int	ft_strncmp(const char *s1, const char *s2, int n);
+
+
+
+
 void		ft_put_hex_original(unsigned int nb, char x, t_vars *vars);
-void		ft_put_hex_nbr(unsigned int nb, char x, t_vars *vars);
+void		ft_put_hex_nbr(unsigned int nb, char *x, t_vars *vars);
 
 void		handle_width(t_vars *vars, int int_len);
 void		handle_padding(t_vars *vars, int flag_counter, int int_len, char c);

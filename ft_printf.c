@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/07 18:31:25 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:22:05 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	print_specifiers(va_list args, t_vars *vars)
 	if (*(vars->str) == 'u')
 		ft_put_unsigned_nbr(va_arg(args, unsigned int), vars);
 	if (*(vars->str) == 'x')
-		ft_put_hex_nbr(va_arg(args, unsigned int), 'x', vars);
+		ft_put_hex_nbr(va_arg(args, unsigned int), BASE_X_min, vars);
 	if (*(vars->str) == 'X')
-		ft_put_hex_nbr(va_arg(args, unsigned int), 'X', vars);
+		ft_put_hex_nbr(va_arg(args, unsigned int), BASE_X_max, vars);
 	if (*(vars->str) == 'p')
 		ft_put_adress(va_arg(args, void *), vars);
 }

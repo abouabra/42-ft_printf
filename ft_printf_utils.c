@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:22:53 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:24:19 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,49 @@ int	ft_atoi(char *str)
 	return (final * sign);
 }
 
-void	ft_putnbr_original(int n, t_vars *vars)
+// void	ft_putnbr_original(int n, t_vars *vars)
+// {
+// 	long	nb;
+	
+// 	nb = n;
+// 	if (nb < 0)
+// 	{
+// 		nb = nb * -1;
+// 	}
+// 	if (nb >= 10)
+// 	{
+// 		ft_putnbr_original(nb / 10, vars);
+// 		ft_putnbr_original(nb % 10, vars);
+// 	}
+// 	else
+// 		ft_putchar_original(nb + '0', vars);
+// }
+void	ft_putnbr_base_originalTEST(unsigned long long nb, char *base,t_vars *vars)
 {
-	long	nb;
+	unsigned long long baselen;
 
-	nb = n;
+	baselen = ft_strlen(base);
+	if (nb >= baselen)
+	{
+		ft_putnbr_base_originalTEST(nb / baselen, base, vars);
+		ft_putnbr_base_originalTEST(nb % baselen, base ,vars);
+	}
+	else
+		ft_putchar_original(nb + '0', vars);
+}
+void	ft_putnbr_base_original(long long nb, char *base,t_vars *vars)
+{
+	int baselen;
+
+	baselen = ft_strlen(base);
 	if (nb < 0)
 	{
 		nb = nb * -1;
 	}
-	if (nb > 9)
+	if (nb >= baselen)
 	{
-		ft_putnbr_original(nb / 10, vars);
-		ft_putnbr_original(nb % 10, vars);
+		ft_putnbr_base_original(nb / baselen, base, vars);
+		ft_putnbr_base_original(nb % baselen, base ,vars);
 	}
 	else
 		ft_putchar_original(nb + '0', vars);

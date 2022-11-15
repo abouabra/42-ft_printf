@@ -6,31 +6,30 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:16:33 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/07 18:13:20 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:24:55 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-void	put_hex_original(unsigned int nb, char x, t_vars *vars)
+void	put_hex_original(unsigned int nb, char *base, t_vars *vars)
 {
-	char	*base;
 
-	if (x == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
+	// if (x == 'x')
+	// 	base = "0123456789abcdef";
+	// else
+	// 	base = "0123456789ABCDEF";
 	if (nb >= 16)
 	{
-		put_hex_original(nb / 16, x, vars);
-		put_hex_original(nb % 16, x, vars);
+		put_hex_original(nb / 16, base, vars);
+		put_hex_original(nb % 16, base, vars);
 	}
 	else
 		ft_putchar_original(base[nb % 16], vars);
 }
 
-void	hex_zero_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
+void	hex_zero_flag(t_vars *vars, int len_of_int, unsigned int nb, char *x)
 {
 	if (vars->flags[zero] == 1)
 	{
@@ -54,7 +53,7 @@ void	hex_zero_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
 	}
 }
 
-void	hex_minus_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
+void	hex_minus_flag(t_vars *vars, int len_of_int, unsigned int nb, char *x)
 {
 	if (vars->flags[minus] == 1)
 	{
@@ -78,7 +77,7 @@ void	hex_minus_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
 	}
 }
 
-void	hex_hashtag_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
+void	hex_hashtag_flag(t_vars *vars, int len_of_int, unsigned int nb, char *x)
 {
 	if (vars->flags[hashtag] == 1)
 	{
@@ -86,16 +85,16 @@ void	hex_hashtag_flag(t_vars *vars, int len_of_int, unsigned int nb, char x)
 		if (nb != 0)
 			len_of_int += 2;
 		handle_width(vars, len_of_int);
-		if (x == 'x' && nb != 0)
+		if (!ft_strncmp(x,BASE_X_min,16) && nb != 0)
 			ft_putstr_original("0x", vars);
-		else if (x == 'X' && nb != 0)
+		else if (!ft_strncmp(x,BASE_X_max,16) && nb != 0)
 			ft_putstr_original("0X", vars);
 		put_hex_original(nb, x, vars);
 		vars->state = 0;
 	}
 }
 
-void	ft_put_hex_nbr(unsigned int nb, char x, t_vars *vars)
+void	ft_put_hex_nbr(unsigned int nb, char *x, t_vars *vars)
 {
 	int	len_of_int;
 
@@ -118,7 +117,7 @@ void	ft_put_hex_nbr(unsigned int nb, char x, t_vars *vars)
 	{
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 		if (nb != 0)
-			put_hex_original(nb, x, vars);
+				put_hex_original(nb, x, vars);
 		set_the_end(vars, precision);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/15 12:19:32 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/15 20:07:45 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	general_single_flag(t_vars *vars, int len_of_int, int n, int index)
 	if (index == zero || index == precision)
 		handle_padding(vars, vars->flag_counter[index], len_of_int, '0');
 	if (index != precision || (index == precision && n != 0))
-		ft_putnbr_original(n, vars);
+		ft_putnbr_base_original(n, BASE_D, vars);
 	if (index == minus)
 		handle_padding(vars, vars->flag_counter[index], len_of_int, ' ');
 	set_the_end(vars, index);
@@ -43,7 +43,7 @@ void	general_multiple_flag(t_vars *vars, int len_of_int, int n, int index)
 	if (index == zero)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 	if (n != 0)
-		ft_putnbr_original(n, vars);
+			ft_putnbr_base_original(n, BASE_D, vars);
 	if (index == minus)
 		handle_padding(vars, vars->flag_counter[minus],
 			vars->flag_counter[precision], ' ');
@@ -66,7 +66,7 @@ void	general_single_flag_b2(t_vars *vars, int len_of_int, int n, int index)
 		else if (index == space)
 			ft_putchar_original(' ', vars);
 	}
-	ft_putnbr_original(n, vars);
+	ft_putnbr_base_original(n, BASE_D, vars);
 	set_the_end(vars, index);
 }
 
@@ -111,7 +111,7 @@ void	ft_putnbr(int n, t_vars *vars)
 	}
 	if (vars->state == 0)
 	{
-		ft_putnbr_original(n, vars);
+		ft_putnbr_base_original(n, BASE_D, vars);
 		return ;
 	}
 	print_flags(vars, len_of_int, n);
