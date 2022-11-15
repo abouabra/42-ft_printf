@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 16:07:19 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/07 18:31:25 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	scan_str(va_list args, t_vars *vars)
 			print_specifiers(args, vars);
 		}
 		else
-			ft_putchar(*(vars->str), vars);
+			ft_putchar_original(*(vars->str), vars);
 		(vars->str)++;
 	}
 }

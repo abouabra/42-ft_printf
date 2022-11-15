@@ -12,89 +12,53 @@
 
 #include "ft_printf.h"
 
-void	scan_flags4(t_vars *vars)
+void set_flags_properties(t_vars *vars,int index)
 {
-	if (*(vars->str) == '#')
-	{
-		(vars->str)++;
-		vars->state = 1;
-		vars->flags[hashtag] = 1;
-	}
-	if (*(vars->str) == '+')
-	{
-		(vars->str)++;
-		vars->state = 1;
-		vars->flags[plus] = 1;
-	}
-	if (*(vars->str) == ' ')
-	{
-		(vars->str)++;
-		vars->state = 1;
-		vars->flags[space] = 1;
-	}
-}
-
-void	scan_flags3(t_vars *vars)
-{
-	int	tmp;
-
-	tmp = ft_atoi(vars->str);
-	if (tmp > 0)
-	{
-		vars->flags[width] = 1;
-		vars->flag_counter[width] = tmp;
-		vars->int_len[width] = int_len(vars, vars->flag_counter[width]);
-	}
-	if (*(vars->str) == '.')
-	{
-		(vars->str)++;
-		vars->state = 1;
-		vars->flags[precision] = 1;
-		vars->flag_counter[precision] = ft_atoi((vars->str));
-		if (*(vars->str) >= '0' && *(vars->str) <= '9')
-			vars->int_len[precision]
-				= int_len(vars, vars->flag_counter[precision]);
-		else
-			vars->int_len[precision] = 0;
-	}
-	scan_flags4(vars);
+	(vars->str)++;
+	vars->state = 1;
+	vars->flags[index] = 1;
+	vars->flag_counter[index] = ft_atoi((vars->str));
+	if (*(vars->str) >= '0' && *(vars->str) <= '9')
+		vars->int_len[index] = int_len(vars, vars->flag_counter[index]);
+	else
+		vars->int_len[index] = 0;
 }
 
 void	scan_flags2(t_vars *vars)
 {
-	if (*(vars->str) == '0')
-	{
-		(vars->str)++;
-		vars->state = 1;
-		vars->flags[zero] = 1;
-		vars->flag_counter[zero] = ft_atoi(vars->str);
-		if (*(vars->str) >= '0' && *(vars->str) <= '9')
-			vars->int_len[zero] = int_len(vars, vars->flag_counter[zero]);
-		else
-			vars->int_len[zero] = 0;
-		return ;
-	}
-	scan_flags3(vars);
+	if (*(vars->str) == '.')
+		set_flags_properties(vars,precision);
+	if (*(vars->str) == '#')
+		set_flags_properties(vars,hashtag);
+	if (*(vars->str) == '+')
+		set_flags_properties(vars,plus);
+	if (*(vars->str) == ' ')
+		set_flags_properties(vars,space);
 }
 
 void	scan_flags(t_vars *vars)
 {
 	if (*(vars->str) == '-')
 	{
-		(vars->str)++;
-		if (*(vars->str) == '0')
+		if (*(vars->str+1) == '0')
 		{
 			(vars->str)++;
 			return ;
 		}
-		vars->state = 1;
-		vars->flags[minus] = 1;
-		vars->flag_counter[minus] = ft_atoi((vars->str));
-		if (*(vars->str) >= '0' && *(vars->str) <= '9')
-			vars->int_len[minus] = int_len(vars, vars->flag_counter[minus]);
-		else
-			vars->int_len[minus] = 0;
+		set_flags_properties(vars,minus);
 		return ;
+	}
+	if (*(vars->str) == '0')
+	{
+		set_flags_properties(vars,zero);
+		return ;
+	}
+	int tmp = ft_atoi(vars->str);
+	if (tmp > 0)
+	{
+		vars->flags[width] = 1;
+		vars->flag_counter[width] = tmp;
+		vars->int_len[width] = int_len(vars, vars->flag_counter[width]);
 	}
 	scan_flags2(vars);
 }
