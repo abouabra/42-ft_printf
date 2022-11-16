@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:18:28 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 19:35:59 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:11:57 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_vars
 	int		flag_counter[7];
 	int		state;
 	char	*base;
-	char	specifier;
 }			t_vars;
 
 # define BASE_D "0123456789"
@@ -48,13 +47,20 @@ enum
 
 int			ft_printf(const char *str, ...);
 
-void		ft_putnbr(int n, char *base, t_vars *vars);
-void		ft_putnbr_original(int n, t_vars *vars);
-
-int			digit_len(t_vars *vars, long long n, int baselen);
-
-void		ft_putnbr_base_original(long long nb, char *base, t_vars *vars);
+int			ft_strlen(char *str);
 int			ft_strncmp(const char *s1, const char *s2, int n);
+char		*ft_strdup(char *s1);
+char		*ft_strchr(const char *s, int c);
+void		*ft_memset(void *b, int c, size_t len);
+void		*libft_calloc(size_t nitems, size_t size);
+int			ft_atoi(char *str);
+
+void		handle_width(t_vars *vars, int int_len);
+void		handle_padding(t_vars *vars, int flag_counter, int int_len, char c);
+void		scan_flags(t_vars *vars);
+void		set_the_end(t_vars *vars, int index);
+int			digit_len(t_vars *vars, long long n, int baselen);
+void		ft_putnbr_base_original(long long nb, char *base, t_vars *vars);
 
 void		general_single_flag(t_vars *vars, int len_of_int, long long n,
 				int index);
@@ -65,30 +71,15 @@ void		general_single_flag_b2(t_vars *vars, int len_of_int, long long n,
 void		print_flags(t_vars *vars, int len_of_int, long long n);
 void		general_init_func(long long n, char *base, t_vars *vars);
 
-void		ft_put_hex_original(unsigned int nb, char x, t_vars *vars);
-void		ft_put_hex_nbr(unsigned int n, char *x, t_vars *vars);
-
-void		handle_width(t_vars *vars, int int_len);
-void		handle_padding(t_vars *vars, int flag_counter, int int_len, char c);
-
 void		handle_string_precision(t_vars *vars, int flag_counter, char *str);
-void		set_the_end(t_vars *vars, int index);
-void		scan_flags(t_vars *vars);
 
 void		ft_putchar(char c, t_vars *vars);
 void		ft_putchar_original(char c, t_vars *vars);
-int			ft_strlen(char *str);
-void		ft_putstr_original(char *s, t_vars *vars);
-char		*ft_strdup(char *s1);
+
 void		ft_putstr(char *s, t_vars *vars);
-void		ft_put_unsigned_nbr(unsigned int n, char *base, t_vars *vars);
-void		ft_put_adress(void *ptr, t_vars *vars);
-char		*ft_strchr(const char *s, int c);
-void		*ft_memset(void *b, int c, size_t len);
-void		*libft_calloc(size_t nitems, size_t size);
-int			int_len(t_vars *vars, long n);
-int			hex_len(unsigned int n);
+void		ft_putstr_original(char *s, t_vars *vars);
+
 int			ptr_len(unsigned long long n);
-int			ft_atoi(char *str);
+void		ft_put_adress(void *ptr, t_vars *vars);
 
 #endif

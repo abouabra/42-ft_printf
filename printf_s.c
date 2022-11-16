@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 19:42:46 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 20:04:15 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,10 @@ void	handle_string_precision(t_vars *vars, int flag_counter, char *str)
 
 	i = 0;
 	vars->flags[width] = 0;
-	while (*str && i < flag_counter)
+	while (str[i] && i < flag_counter)
 	{
-		ft_putchar_original(*str, vars);
+		ft_putchar_original(str[i], vars);
 		i++;
-		str++;
 	}
 	vars->int_len[width] = 0;
 	vars->flag_counter[width] = 0;
