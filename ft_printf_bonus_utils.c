@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/15 20:16:35 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 17:00:00 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	set_the_end(t_vars *vars, int index)
 	vars->int_len[index] = 0;
 	vars->flag_counter[index] = 0;
 	vars->state = 0;
+	vars->specifier = 0;
 }
 
 int	hex_len(unsigned int n)

@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/15 20:24:19 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:27:24 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	int_len(t_vars *vars, long n)
 {
 	int	counter;
 
-	(void)vars;
 	counter = 0;
 	if (n == 0)
 		return (1);
@@ -77,19 +76,28 @@ int	ft_atoi(char *str)
 // 	else
 // 		ft_putchar_original(nb + '0', vars);
 // }
-void	ft_putnbr_base_originalTEST(unsigned long long nb, char *base,t_vars *vars)
+int	digit_len(t_vars *vars, long long n,int baselen)
 {
-	unsigned long long baselen;
-
-	baselen = ft_strlen(base);
-	if (nb >= baselen)
+	int	counter;
+	(void) vars;
+	counter = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
 	{
-		ft_putnbr_base_originalTEST(nb / baselen, base, vars);
-		ft_putnbr_base_originalTEST(nb % baselen, base ,vars);
+		n = n * -1;
+		if (vars->flags[precision] != 1)
+			counter++;
 	}
-	else
-		ft_putchar_original(nb + '0', vars);
+	while (n > 0)
+	{
+		counter++;
+		n = n / baselen;
+	}
+
+	return (counter);
 }
+
 void	ft_putnbr_base_original(long long nb, char *base,t_vars *vars)
 {
 	int baselen;
@@ -105,5 +113,5 @@ void	ft_putnbr_base_original(long long nb, char *base,t_vars *vars)
 		ft_putnbr_base_original(nb % baselen, base ,vars);
 	}
 	else
-		ft_putchar_original(nb + '0', vars);
+		ft_putchar_original(base[nb % baselen], vars);
 }

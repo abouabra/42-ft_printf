@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/15 20:22:05 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 18:26:23 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	print_specifiers(va_list args, t_vars *vars)
 {
+	vars->specifier = (char) *(vars->str);
 	if (*(vars->str) == 'c')
 		ft_putchar(va_arg(args, int), vars);
 	if (*(vars->str) == '%')
@@ -21,9 +22,9 @@ void	print_specifiers(va_list args, t_vars *vars)
 	if (*(vars->str) == 's')
 		ft_putstr(va_arg(args, char *), vars);
 	if (*(vars->str) == 'd' || *(vars->str) == 'i')
-		ft_putnbr(va_arg(args, int), vars);
+		ft_putnbr(va_arg(args, int), BASE_D , vars);
 	if (*(vars->str) == 'u')
-		ft_put_unsigned_nbr(va_arg(args, unsigned int), vars);
+		ft_put_unsigned_nbr(va_arg(args, unsigned int),BASE_D, vars);
 	if (*(vars->str) == 'x')
 		ft_put_hex_nbr(va_arg(args, unsigned int), BASE_X_min, vars);
 	if (*(vars->str) == 'X')

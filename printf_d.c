@@ -6,28 +6,32 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/15 20:07:45 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:27:43 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-void	general_single_flag(t_vars *vars, int len_of_int, int n, int index)
+#include <stdio.h>
+void	general_single_flag(t_vars *vars, int len_of_int, long long n, int index)
 {
 	if (index == zero || index == precision)
+	{
+		if (vars->flag_counter[index] < len_of_int)
+			vars->flag_counter[index] = len_of_int;
 		handle_padding(vars, vars->flag_counter[index], len_of_int, '0');
+	}	
 	if (index != precision || (index == precision && n != 0))
-		ft_putnbr_base_original(n, BASE_D, vars);
+		ft_putnbr_base_original(n, vars->base, vars);
 	if (index == minus)
 		handle_padding(vars, vars->flag_counter[index], len_of_int, ' ');
 	set_the_end(vars, index);
 }
 
-void	general_multiple_flag(t_vars *vars, int len_of_int, int n, int index)
+void	general_multiple_flag(t_vars *vars, int len_of_int, long long n, int index)
 {
 	if (n < 0)
 		vars->flag_counter[index]--;
-	if (vars->flag_counter[precision] < int_len(vars, n))
+	if (vars->flag_counter[precision] < len_of_int)
 		vars->flag_counter[precision] = len_of_int;
 	if (index == minus)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
@@ -43,7 +47,7 @@ void	general_multiple_flag(t_vars *vars, int len_of_int, int n, int index)
 	if (index == zero)
 		handle_padding(vars, vars->flag_counter[precision], len_of_int, '0');
 	if (n != 0)
-			ft_putnbr_base_original(n, BASE_D, vars);
+			ft_putnbr_base_original(n, vars->base, vars);
 	if (index == minus)
 		handle_padding(vars, vars->flag_counter[minus],
 			vars->flag_counter[precision], ' ');
@@ -51,11 +55,13 @@ void	general_multiple_flag(t_vars *vars, int len_of_int, int n, int index)
 	set_the_end(vars, index);
 }
 
-void	general_single_flag_b2(t_vars *vars, int len_of_int, int n, int index)
+void	general_single_flag_b2(t_vars *vars, int len_of_int, long long n, int index)
 {
 	vars->flags[index] = 0;
 	if (n >= 0)
 		len_of_int++;
+	if (vars->flags[hashtag] == 1 && n != 0)
+			len_of_int += 2;
 	handle_width(vars, len_of_int);
 	if (n < 0)
 		ft_putchar_original('-', vars);
@@ -65,12 +71,19 @@ void	general_single_flag_b2(t_vars *vars, int len_of_int, int n, int index)
 			ft_putchar_original('+', vars);
 		else if (index == space)
 			ft_putchar_original(' ', vars);
+		else if(index == hashtag)
+		{
+			if (!ft_strncmp(vars->base,BASE_X_min,16) && n != 0)
+				ft_putstr_original("0x", vars);
+			else if (!ft_strncmp(vars->base,BASE_X_max,16) && n != 0)
+				ft_putstr_original("0X", vars);
+		}
 	}
-	ft_putnbr_base_original(n, BASE_D, vars);
+	ft_putnbr_base_original(n, vars->base, vars);
 	set_the_end(vars, index);
 }
 
-void	print_flags(t_vars *vars, int len_of_int, int n)
+void	print_flags(t_vars *vars, int len_of_int, long long n)
 {
 	if (vars->flags[zero] == 1)
 	{
@@ -92,18 +105,21 @@ void	print_flags(t_vars *vars, int len_of_int, int n)
 		general_single_flag_b2(vars, len_of_int, n, plus);
 	if (vars->flags[space] == 1)
 		general_single_flag_b2(vars, len_of_int, n, space);
+	if (vars->flags[hashtag] == 1)
+		general_single_flag_b2(vars, len_of_int, n, hashtag);
 }
 
-void	ft_putnbr(int n, t_vars *vars)
+void	general_init_func(long long n, char *base, t_vars *vars)
 {
 	int	len_of_int;
-
-	len_of_int = int_len(vars, n);
+	
+	vars->base = base;
+	len_of_int = digit_len(vars, n,ft_strlen(vars->base));
 	if (n == 0 && vars->flags[precision] == 1)
 		len_of_int--;
 	if (vars->flags[plus] != 1 && vars->flags[space] != 1
-		&& vars->flags[precision] != 1)
-		handle_width(vars, int_len(vars, n));
+		&& vars->flags[hashtag] != 1 && vars->flags[precision] != 1)
+		handle_width(vars, len_of_int);
 	if (n < 0 && vars->flags[plus] != 1 && vars->flags[space] != 1
 		&& (vars->flags[precision] != 1 || vars->flags[zero] != 1))
 	{
@@ -111,8 +127,13 @@ void	ft_putnbr(int n, t_vars *vars)
 	}
 	if (vars->state == 0)
 	{
-		ft_putnbr_base_original(n, BASE_D, vars);
+		ft_putnbr_base_original(n, vars->base, vars);
 		return ;
 	}
 	print_flags(vars, len_of_int, n);
+}
+
+void	ft_putnbr(int n, char *base, t_vars *vars)
+{
+	general_init_func(n,base,vars);
 }
