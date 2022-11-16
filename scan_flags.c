@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   scan_flags.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+        
-	+:+     */
+														+:+     */
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+      
-	+#+        */
+		+#+        */
 /*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2022/11/07 18:19:08 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/07 18:19:08 by abouabra         ###   ########.fr       */
+													+#+           */
+/*   Created: 2022/11/16 19:41:14 by abouabra          #+#    #+#             */
+/*   Updated: 2022/11/16 19:41:14 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	set_flags_properties(t_vars *vars, int index)
 	vars->flags[index] = 1;
 	vars->flag_counter[index] = ft_atoi((vars->str));
 	if (*(vars->str) >= '0' && *(vars->str) <= '9')
-		vars->int_len[index] = int_len(vars, vars->flag_counter[index]);
+		vars->int_len[index] = digit_len(vars, vars->flag_counter[index],
+				ft_strlen(BASE_D));
 	else
 		vars->int_len[index] = 0;
 }
@@ -63,7 +64,7 @@ void	scan_flags(t_vars *vars)
 	{
 		vars->flags[width] = 1;
 		vars->flag_counter[width] = tmp;
-		vars->int_len[width] = int_len(vars, vars->flag_counter[width]);
+		vars->int_len[width] = digit_len(vars, vars->flag_counter[width], 10);
 	}
 	scan_flags2(vars);
 }

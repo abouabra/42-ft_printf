@@ -6,11 +6,12 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:18:14 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 18:26:49 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:43:00 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 int	ptr_len(unsigned long long n)
 {
 	int	counter;
@@ -34,14 +35,14 @@ void	adress_helper(unsigned long long nb, t_vars *vars)
 		adress_helper(nb % 16, vars);
 	}
 	else
-		ft_putchar_original(BASE_X_min[nb % 16], vars);
+		ft_putchar_original(BASE_X_MIN[nb % 16], vars);
 }
 
 void	ft_put_adress(void *ptr, t_vars *vars)
 {
 	unsigned long long	nb;
-	int	len_of_int;
-	
+	int					len_of_int;
+
 	nb = (unsigned long long)ptr;
 	len_of_int = ptr_len(nb) + 2;
 	handle_width(vars, len_of_int);

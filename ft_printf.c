@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 18:26:23 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:54:02 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	print_specifiers(va_list args, t_vars *vars)
 {
-	vars->specifier = (char) *(vars->str);
+	vars->specifier = (char)*(vars->str);
 	if (*(vars->str) == 'c')
 		ft_putchar(va_arg(args, int), vars);
 	if (*(vars->str) == '%')
-		ft_putchar('%', vars);
+		ft_putchar_original('%', vars);
 	if (*(vars->str) == 's')
 		ft_putstr(va_arg(args, char *), vars);
 	if (*(vars->str) == 'd' || *(vars->str) == 'i')
-		ft_putnbr(va_arg(args, int), BASE_D , vars);
+		general_init_func(va_arg(args, int), BASE_D, vars);
 	if (*(vars->str) == 'u')
-		ft_put_unsigned_nbr(va_arg(args, unsigned int),BASE_D, vars);
+		general_init_func(va_arg(args, unsigned int), BASE_D, vars);
 	if (*(vars->str) == 'x')
-		ft_put_hex_nbr(va_arg(args, unsigned int), BASE_X_min, vars);
+		general_init_func(va_arg(args, unsigned int), BASE_X_MIN, vars);
 	if (*(vars->str) == 'X')
-		ft_put_hex_nbr(va_arg(args, unsigned int), BASE_X_max, vars);
+		general_init_func(va_arg(args, unsigned int), BASE_X_MAX, vars);
 	if (*(vars->str) == 'p')
 		ft_put_adress(va_arg(args, void *), vars);
 }

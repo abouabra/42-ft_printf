@@ -6,11 +6,49 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 17:00:00 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/16 19:48:33 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+int	ft_strncmp(const char *s1, const char *s2, int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
+}
+
+int	ft_atoi(char *str)
+{
+	int	i;
+	int	sign;
+	int	final;
+
+	i = 0;
+	sign = 1;
+	final = 0;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		final = final * 10 + str[i] - '0';
+		i++;
+	}
+	return (final * sign);
+}
 
 void	handle_width(t_vars *vars, int int_len)
 {
@@ -44,31 +82,4 @@ void	set_the_end(t_vars *vars, int index)
 	vars->flag_counter[index] = 0;
 	vars->state = 0;
 	vars->specifier = 0;
-}
-
-int	hex_len(unsigned int n)
-{
-	int	counter;
-
-	counter = 0;
-	if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		counter++;
-		n = n / 16;
-	}
-	return (counter);
-}
-
-int	ft_strncmp(const char *s1, const char *s2, int n)
-{
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
-		i++;
-	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 }
