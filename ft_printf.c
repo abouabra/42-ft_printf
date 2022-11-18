@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 08:01:40 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 19:54:02 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:59:37 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	print_specifiers(va_list args, t_vars *vars)
 {
-	vars->specifier = (char)*(vars->str);
 	if (*(vars->str) == 'c')
 		ft_putchar(va_arg(args, int), vars);
 	if (*(vars->str) == '%')

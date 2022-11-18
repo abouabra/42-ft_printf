@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:03:11 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 20:04:15 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:02:33 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ void	ft_putstr(char *s, t_vars *vars)
 	if (!s)
 		s = "(null)";
 	len_of_str = ft_strlen(s);
-	if (vars->flags[width] == 1 && vars->flags[precision] != 1
-		&& vars->flags[precision] != 1)
+	if (vars->flags[width] == 1 && vars->flags[precision] != 1)
 		handle_width(vars, len_of_str);
 	if (vars->state == 0)
 	{

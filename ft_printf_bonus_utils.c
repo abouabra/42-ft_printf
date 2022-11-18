@@ -6,7 +6,7 @@
 /*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 10:37:20 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/16 19:48:33 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:59:47 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,4 @@ void	set_the_end(t_vars *vars, int index)
 	vars->int_len[index] = 0;
 	vars->flag_counter[index] = 0;
 	vars->state = 0;
-	vars->specifier = 0;
 }

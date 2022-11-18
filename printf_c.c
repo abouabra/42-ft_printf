@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_c.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abouabra <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: abouabra < abouabra@student.1337.ma >      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:23:12 by abouabra          #+#    #+#             */
-/*   Updated: 2022/11/06 19:23:15 by abouabra         ###   ########.fr       */
+/*   Updated: 2022/11/17 11:01:58 by abouabra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ void	ft_putchar(char c, t_vars *vars)
 	{
 		ft_putchar_original(c, vars);
 		handle_padding(vars, vars->flag_counter[minus], 1, ' ');
-		vars->flags[minus] = 0;
-		vars->int_len[minus] = 0;
-		vars->flag_counter[minus] = 0;
-		vars->state = 0;
+		set_the_end(vars, minus);
 	}
 }
