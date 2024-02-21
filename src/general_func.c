@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void	general_single_flag(t_vars *vars, int len_of_int, long long n,
 		int index)
