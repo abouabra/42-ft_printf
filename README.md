@@ -7,14 +7,14 @@ ft_printf is a project that aims to mimic the behavior of the original printf fu
 ## Installation
 To use the `libftprintf` library in your projects, follow these steps:
 
-1. Clone the ft_libft repository: `git clone https://github.com/abouabra/42-ft_printf.git`
-2. Navigate to the ft_libft directory: `cd 42-ft_printf`
+1. Clone the ft_printf repository: `git clone https://github.com/abouabra/42-ft_printf.git`
+2. Navigate to the ft_printf directory: `cd 42-ft_printf`
 3. Compile the library using the provided Makefile: `make`.
 This will generate the `libftprintf.a` static library file.
 4. Link `libftprintf.a` to your project at compile time. You can do this by including the library in your compilation command or by adding it to your project's Makefile.
 
 ## Usage
-To use the functions provided by the libft library, include the `ft_printf.h` header file in your source code:
+To use the functions provided by the ft_printf library, include the `ft_printf.h` header file in your source code:
 
 ## Example
 ```c
